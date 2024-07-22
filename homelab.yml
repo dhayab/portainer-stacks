@@ -1,0 +1,33 @@
+version: "2"
+
+services:
+  homepage:
+    container_name: homelab-homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    restart: always
+    ports:
+      - 7676:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - $CONFIG_ROOT/homepage:/app/config:rw
+
+  netalertx:
+    container_name: homelab-netalertx
+    image: jokobsk/netalertx:latest
+    network_mode: host
+    mem_limit: 4g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    restart: on-failure:5
+    environment:
+      TZ: $TZ
+      PORT: 20211
+      HOST_USER_ID: $PUID
+      HOST_USER_GID: $PGID
+    volumes:
+      - $CONFIG_ROOT/netalertx/config:/app/config:rw
+      - $CONFIG_ROOT/netalertx/db:/app/db:rw
+      - $CONFIG_ROOT/netalertx/logs:/app/front/log:rw
+    healthcheck:
+      test: curl -f http://localhost:20211/ || exit 1
