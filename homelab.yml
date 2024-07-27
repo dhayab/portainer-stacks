@@ -1,6 +1,26 @@
 version: "2"
 
 services:
+  homebridge:
+    container_name: homelab-homebridge
+    image: homebridge/homebridge:latest
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      ENABLE_AVAHI: 0
+      HOMEBRIDGE_CONFIG_UI_PORT: 9999
+    volumes:
+      - $CONFIG_ROOT/homebridge:/homebridge:rw
+    healthcheck:
+      test: curl -f localhost:9999 || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 300s
+      timeout: 2s
+
   homepage:
     container_name: homelab-homepage
     image: ghcr.io/gethomepage/homepage:latest
@@ -30,4 +50,17 @@ services:
       - $CONFIG_ROOT/netalertx/db:/app/db:rw
       - $CONFIG_ROOT/netalertx/logs:/app/front/log:rw
     healthcheck:
-      test: curl -f http://localhost:20211/ || exit 1
+      test: curl -f localhost:20211 || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 300s
+      timeout: 2s
+
+  pomerium:
+    container_name: homelab-pomerium
+    image: pomerium/pomerium:v0.26
+    restart: always
+    ports:
+      - 32443:443/tcp
+    volumes:
+      - $CONFIG_ROOT/pomerium/config.yaml:/pomerium/config.yaml:ro
