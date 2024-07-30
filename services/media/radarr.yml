@@ -1,0 +1,17 @@
+services:
+  radarr:
+    container_name: media-radarr
+    image: linuxserver/radarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 7878:7878
+    volumes:
+      - $CONFIG_ROOT/radarr:/config
+      - $DOWNLOADS:/downloads
+      # Additional volume mounts for media
+      - $MEDIA_ROOT/Films:/movies
+      - $MEDIA_ROOT/Films FR:/movies-fr

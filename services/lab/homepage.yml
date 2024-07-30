@@ -1,0 +1,10 @@
+services:
+  homepage:
+    container_name: lab-homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    restart: always
+    ports:
+      - 7676:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - $CONFIG_ROOT/homepage:/app/config:rw

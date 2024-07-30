@@ -1,0 +1,19 @@
+services:
+  transmission:
+    container_name: media-transmission
+    image: linuxserver/transmission:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      TRANSMISSION_WEB_HOME: /web/combustion
+    ports:
+      - 9091:9091
+      - 51413:51413/tcp
+      - 51413:51413/udp
+    volumes:
+      - $CONFIG_ROOT/transmission:/config
+      - $DOWNLOADS/.transmission:/downloads/.transmission
+      # Additional volume mount for web ui
+      - $CONFIG_ROOT/transmission/web:/web

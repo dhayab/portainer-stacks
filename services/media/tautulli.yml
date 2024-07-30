@@ -1,0 +1,13 @@
+services:
+  tautulli:
+    container_name: media-tautulli
+    image: ghcr.io/tautulli/tautulli
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 8181:8181
+    volumes:
+      - $CONFIG_ROOT/tautulli:/config

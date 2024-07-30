@@ -1,0 +1,9 @@
+services:
+  pomerium:
+    container_name: lab-pomerium
+    image: pomerium/pomerium:v0.26
+    restart: always
+    ports:
+      - 32443:443/tcp
+    volumes:
+      - $CONFIG_ROOT/pomerium/config.yaml:/pomerium/config.yaml:ro

@@ -1,5 +1,3 @@
-version: "2"
-
 services:
   n8b-browserless:
     container_name: n8n-browserless

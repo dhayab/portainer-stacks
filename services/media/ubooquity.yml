@@ -1,0 +1,16 @@
+services:
+  ubooquity:
+    container_name: media-ubooquity
+    image: linuxserver/ubooquity:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 2202:2202
+      - 2203:2203
+    volumes:
+      - $CONFIG_ROOT/ubooquity:/config
+      # Additional volume mounts for media
+      - $MEDIA_ROOT/Comics:/comics

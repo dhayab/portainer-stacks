@@ -1,0 +1,14 @@
+services:
+  nzbget:
+    container_name: media-nzbget
+    image: linuxserver/nzbget:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 6789:6789
+    volumes:
+      - $CONFIG_ROOT/nzbget:/config
+      - $DOWNLOADS:/downloads

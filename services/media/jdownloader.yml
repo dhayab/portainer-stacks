@@ -1,0 +1,16 @@
+services:
+  jdownloader:
+    container_name: media-jdownloader
+    image: jlesage/jdownloader-2:latest
+    restart: unless-stopped
+    mem_limit: 4g
+    cpu_shares: 768
+    environment:
+      USER_ID: $PUID
+      GROUP_ID: $PGID
+      TZ: $TZ
+    ports:
+      - 5800:5800
+    volumes:
+      - $CONFIG_ROOT/jdownloader:/config
+      - $DOWNLOADS:/output

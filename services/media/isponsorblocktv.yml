@@ -1,0 +1,7 @@
+services:
+  isponsorblocktv:
+    container_name: media-isponsorblocktv
+    image: ghcr.io/dmunozv04/isponsorblocktv:latest
+    restart: unless-stopped
+    volumes:
+      - $CONFIG_ROOT/isponsorblocktv:/app/data

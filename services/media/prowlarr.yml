@@ -1,0 +1,13 @@
+services:
+  prowlarr:
+    container_name: media-prowlarr
+    image: linuxserver/prowlarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 9696:9696
+    volumes:
+      - $CONFIG_ROOT/prowlarr:/config

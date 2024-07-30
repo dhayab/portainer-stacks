@@ -1,0 +1,25 @@
+services:
+  netalertx:
+    container_name: lab-netalertx
+    image: jokobsk/netalertx:latest
+    network_mode: host
+    mem_limit: 4g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    restart: on-failure:5
+    environment:
+      TZ: $TZ
+      PORT: 20211
+      HOST_USER_ID: $PUID
+      HOST_USER_GID: $PGID
+    volumes:
+      - $CONFIG_ROOT/netalertx/config:/app/config:rw
+      - $CONFIG_ROOT/netalertx/db:/app/db:rw
+      - $CONFIG_ROOT/netalertx/logs:/app/front/log:rw
+    healthcheck:
+      test: curl -f localhost:20211 || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 300s
+      timeout: 2s

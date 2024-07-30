@@ -1,0 +1,20 @@
+services:
+  homebridge:
+    container_name: lab-homebridge
+    image: homebridge/homebridge:latest
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      ENABLE_AVAHI: 0
+      HOMEBRIDGE_CONFIG_UI_PORT: 9999
+    volumes:
+      - $CONFIG_ROOT/homebridge:/homebridge:rw
+    healthcheck:
+      test: curl -f localhost:9999 || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 300s
+      timeout: 2s

@@ -1,0 +1,17 @@
+services:
+  sonarr:
+    container_name: media-sonarr
+    image: linuxserver/sonarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 8989:8989
+    volumes:
+      - $CONFIG_ROOT/sonarr:/config
+      - $DOWNLOADS:/downloads
+      # Additional volume mounts for media
+      - $MEDIA_ROOT/Anime:/anime
+      - $MEDIA_ROOT/TV:/tv

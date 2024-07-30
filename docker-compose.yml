@@ -1,0 +1,19 @@
+# Use `make build` to generate and update this file
+include:
+  - services/lab/homepage.yml
+  - services/lab/netalertx.yml
+  - services/lab/pomerium.yml
+  - services/lab/homebridge.yml
+  - services/productivity/n8n.yml
+  - services/media/mylar.yml
+  - services/media/overseerr.yml
+  - services/media/shinkro.yml
+  - services/media/radarr.yml
+  - services/media/prowlarr.yml
+  - services/media/isponsorblocktv.yml
+  - services/media/jdownloader.yml
+  - services/media/nzbget.yml
+  - services/media/tautulli.yml
+  - services/media/ubooquity.yml
+  - services/media/sonarr.yml
+  - services/media/transmission.yml

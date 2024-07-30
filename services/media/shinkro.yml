@@ -1,0 +1,19 @@
+services:
+  shinkro:
+    container_name: media-shinkro
+    image: ghcr.io/varoop/shinkro:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      # Required for first start
+      SHINKRO_USERNAME: shinkro
+      SHINKRO_PASSWORD: shinkro
+      PLEX_USERNAME: dhaya
+      ANIME_LIBRARIES: Anime
+    ports:
+      - 7011:7011
+    volumes:
+      - $CONFIG_ROOT/shinkro:/config
+

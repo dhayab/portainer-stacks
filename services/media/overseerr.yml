@@ -1,0 +1,13 @@
+services:
+  overseerr:
+    container_name: media-overseerr
+    image: linuxserver/overseerr:latest
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 5055:5055
+    volumes:
+      - $CONFIG_ROOT/overseerr:/config
