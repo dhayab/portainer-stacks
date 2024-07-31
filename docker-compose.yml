@@ -9,6 +9,7 @@ include:
   - services/media/overseerr.yml
   - services/media/shinkro.yml
   - services/media/radarr.yml
+  - services/media/maintainerr.yml
   - services/media/prowlarr.yml
   - services/media/isponsorblocktv.yml
   - services/media/jdownloader.yml

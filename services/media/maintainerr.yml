@@ -1,0 +1,12 @@
+services:
+  maintainerr:
+    container_name: media-maintainerr
+    image: ghcr.io/jorenn92/maintainerr:latest
+    restart: unless-stopped
+    user: $PUID:$PGID
+    environment:
+      TZ: $TZ
+    ports:
+      - 6246:6246
+    volumes:
+      - $CONFIG_ROOT/maintainerr:/opt/data
