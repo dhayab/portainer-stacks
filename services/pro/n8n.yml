@@ -26,7 +26,7 @@ services:
       - $CONFIG_ROOT/n8n/db:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -h localhost -U n8n -d n8n"]
-      interval: 5s
+      interval: 60s
       timeout: 5s
       retries: 10
 

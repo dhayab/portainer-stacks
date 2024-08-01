@@ -1,0 +1,33 @@
+services:
+  umami-db:
+    container_name: umami-db
+    image: postgres:12-alpine
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
+    volumes:
+      - $CONFIG_ROOT/umami/db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -U umami -d umami"]
+      interval: 60s
+      retries: 10
+      timeout: 5s
+
+  umami:
+    container_name: umami
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    depends_on:
+      - umami-db
+    links:
+      - umami-db
+    environment:
+      APP_SECRET: $UMAMI_APP_SECRET
+      DATABASE_TYPE: postgresql
+      DATABASE_URL: postgresql://umami:umami@umami-db:5432/umami
+    ports:
+      - 3000:3000

@@ -1,10 +1,11 @@
 # Use `make build` to generate and update this file
 include:
+  - services/pro/umami.yml
+  - services/pro/n8n.yml
   - services/lab/homepage.yml
   - services/lab/netalertx.yml
   - services/lab/pomerium.yml
   - services/lab/homebridge.yml
-  - services/productivity/n8n.yml
   - services/media/mylar.yml
   - services/media/overseerr.yml
   - services/media/shinkro.yml
