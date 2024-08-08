@@ -52,3 +52,9 @@ services:
       - 5678:5678
     volumes:
       - $CONFIG_ROOT/n8n/app:/home/node/.n8n
+    healthcheck:
+      test: curl -f localhost:5678/healthz || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 30s
+      timeout: 2s
