@@ -1,0 +1,16 @@
+services:
+  bastion:
+    container_name: bastion
+    image: lscr.io/linuxserver/openssh-server:latest
+    restart: always
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      LOG_STDOUT: true
+      PUBLIC_KEY_URL: $BASTION_PUBLIC_KEY_URL
+      USER_NAME: bastion
+    ports:
+      - 2222:2222
+    volumes:
+      - $CONFIG_ROOT/bastion/sshd_config:/config/sshd/sshd_config:ro

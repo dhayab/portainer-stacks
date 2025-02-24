@@ -3,6 +3,7 @@ include:
   - services/pro/umami.yml
   - services/pro/n8n.yml
   - services/lab/homepage.yml
+  - services/lab/bastion.yml
   - services/lab/netalertx.yml
   - services/lab/pomerium.yml
   - services/lab/homebridge.yml
