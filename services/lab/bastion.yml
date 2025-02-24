@@ -13,4 +13,4 @@ services:
     ports:
       - 2222:2222
     volumes:
-      - $CONFIG_ROOT/bastion/sshd_config:/config/sshd/sshd_config:ro
+      - $CONFIG_ROOT/bastion/sshd_config:/config/sshd/sshd_config:rw
