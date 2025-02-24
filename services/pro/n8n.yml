@@ -24,11 +24,6 @@ services:
       POSTGRES_PASSWORD: n8n
     volumes:
       - $CONFIG_ROOT/n8n/db:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -h localhost -U n8n -d n8n"]
-      interval: 60s
-      timeout: 5s
-      retries: 10
 
   n8n:
     container_name: n8n
@@ -52,9 +47,3 @@ services:
       - 5678:5678
     volumes:
       - $CONFIG_ROOT/n8n/app:/home/node/.n8n
-    healthcheck:
-      test: curl -f localhost:5678/healthz || exit 1
-      interval: 60s
-      retries: 5
-      start_period: 30s
-      timeout: 2s

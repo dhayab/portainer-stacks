@@ -12,11 +12,6 @@ services:
       POSTGRES_PASSWORD: umami
     volumes:
       - $CONFIG_ROOT/umami/db:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -h localhost -U umami -d umami"]
-      interval: 60s
-      retries: 10
-      timeout: 5s
 
   umami:
     container_name: umami
