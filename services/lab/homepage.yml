@@ -3,6 +3,8 @@ services:
     container_name: lab-homepage
     image: ghcr.io/gethomepage/homepage:latest
     restart: always
+    environment:
+      HOMEPAGE_ALLOWED_HOST: $HOST_IP:7676
     ports:
       - 7676:3000
     volumes:
