@@ -1,5 +1,6 @@
 # Use `make build` to generate and update this file
 include:
+  - services/misc/instafix.yml
   - services/pro/umami.yml
   - services/pro/n8n.yml
   - services/lab/homepage.yml

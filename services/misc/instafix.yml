@@ -1,0 +1,11 @@
+services:
+  instafix:
+    container_name: instafix
+    image: ghcr.io/wikidepia/instafix:main
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 3333:3000
