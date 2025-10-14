@@ -6,4 +6,4 @@ services:
     ports:
       - 32443:443/tcp
     volumes:
-      - $CONFIG_ROOT/pomerium/config.yaml:/pomerium/config.yaml:ro
+      - $CONFIG_ROOT/pomerium:/pomerium:ro
