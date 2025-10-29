@@ -26,3 +26,4 @@ services:
       DATABASE_URL: postgresql://umami:umami@umami-db:5432/umami
     ports:
       - 3000:3000
+    entrypoint: ["/bin/sh", "-c", "sleep 30 && docker-entrypoint.sh"]
