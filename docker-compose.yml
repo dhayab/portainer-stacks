@@ -1,23 +1,23 @@
 # Use `make build` to generate and update this file
 include:
-  - services/misc/instafix.yml
-  - services/pro/umami.yml
-  - services/pro/n8n.yml
-  - services/lab/homepage.yml
   - services/lab/bastion.yml
+  - services/lab/homebridge.yml
+  - services/lab/homepage.yml
   - services/lab/netalertx.yml
   - services/lab/pomerium.yml
-  - services/lab/homebridge.yml
-  - services/media/mylar.yml
-  - services/media/overseerr.yml
-  - services/media/shinkro.yml
-  - services/media/radarr.yml
-  - services/media/maintainerr.yml
-  - services/media/prowlarr.yml
   - services/media/isponsorblocktv.yml
   - services/media/jdownloader.yml
+  - services/media/maintainerr.yml
+  - services/media/mylar.yml
   - services/media/nzbget.yml
-  - services/media/tautulli.yml
-  - services/media/ubooquity.yml
+  - services/media/overseerr.yml
+  - services/media/prowlarr.yml
+  - services/media/radarr.yml
+  - services/media/shinkro.yml
   - services/media/sonarr.yml
+  - services/media/tautulli.yml
   - services/media/transmission.yml
+  - services/media/ubooquity.yml
+  - services/misc/instafix.yml
+  - services/pro/n8n.yml
+  - services/pro/umami.yml

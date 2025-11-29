@@ -1,0 +1,5 @@
+# Use `make build` to generate and update this file
+include:
+  - services/ai/comfyui.yml
+  - services/ai/ollama.yml
+  - services/ai/openwebui.yml

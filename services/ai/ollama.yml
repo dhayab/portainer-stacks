@@ -1,0 +1,24 @@
+services:
+  ollama:
+    x-target: ridge
+    container_name: ollama
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    tty: true
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 60
+      start_period: 2m
+    volumes:
+      - $CONFIG_ROOT_RIDGE/ollama:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+              - driver: nvidia
+                count: all
+                capabilities: [gpu]

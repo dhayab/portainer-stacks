@@ -1,0 +1,21 @@
+services:
+  openwebui:
+    x-target: ridge
+    container_name: openwebui
+    image: ghcr.io/open-webui/open-webui:main
+    restart: unless-stopped
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      WEBUI_URL: $WEBUI_URL
+      ENV: prod
+      CUSTOM_NAME: llm
+      WEBUI_AUTH_TRUSTED_EMAIL_HEADER: $WEBUI_EMAIL_HEADER
+      WEBUI_AUTH_TRUSTED_NAME_HEADER: $WEBUI_NAME_HEADER
+      ENABLE_ADMIN_CHAT_ACCESS: false
+    ports:
+      - 8080:8080
+    volumes:
+      - $CONFIG_ROOT_RIDGE/openwebui:/app/backend/data

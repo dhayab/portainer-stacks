@@ -1,5 +1,5 @@
 services:
-  n8b-browserless:
+  n8n-browserless:
     container_name: n8n-browserless
     image: browserless/chrome:latest
     restart: unless-stopped
