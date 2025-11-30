@@ -2,7 +2,7 @@ services:
   comfyui:
     x-target: ridge
     container_name: comfyui
-    image: mmartial/comfyui-nvidia-docker:ubuntu24_cuda12.9-latest
+    image: mmartial/comfyui-nvidia-docker:ubuntu24_cuda13.0-latest
     restart: unless-stopped
     environment:
       WANTED_UID: 0
@@ -10,7 +10,8 @@ services:
       BASE_DIRECTORY: /basedir
       SECURITY_LEVEL: normal
       LD_LIBRARY_PATH: /usr/lib/wsl/lib
-      COMFY_CMDLINE_EXTRA: --fast --lowvram
+      COMFY_CMDLINE_EXTRA: --lowvram
+      USE_UV: true
     ports:
       - 8188:8188
     volumes:
