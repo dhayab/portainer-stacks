@@ -3,7 +3,6 @@ include:
   - services/lab/bastion.yml
   - services/lab/homebridge.yml
   - services/lab/homepage.yml
-  - services/lab/netalertx.yml
   - services/lab/pomerium.yml
   - services/media/isponsorblocktv.yml
   - services/media/jdownloader.yml
