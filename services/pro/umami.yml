@@ -10,6 +10,11 @@ services:
       POSTGRES_DB: umami
       POSTGRES_USER: umami
       POSTGRES_PASSWORD: umami
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
     volumes:
       - $CONFIG_ROOT/umami/db:/var/lib/postgresql/data
 
@@ -17,13 +22,11 @@ services:
     container_name: umami
     image: ghcr.io/umami-software/umami:postgresql-latest
     depends_on:
-      - umami-db
-    links:
-      - umami-db
+      umami-db:
+        condition: service_healthy
     environment:
       APP_SECRET: $UMAMI_APP_SECRET
       DATABASE_TYPE: postgresql
       DATABASE_URL: postgresql://umami:umami@umami-db:5432/umami
     ports:
       - 3000:3000
-    entrypoint: ["/bin/sh", "-c", "sleep 30 && docker-entrypoint.sh"]
