@@ -21,6 +21,7 @@ services:
   umami:
     container_name: umami
     image: ghcr.io/umami-software/umami:postgresql-latest
+    restart: unless-stopped
     depends_on:
       umami-db:
         condition: service_healthy
