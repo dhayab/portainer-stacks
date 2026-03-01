@@ -13,7 +13,7 @@ services:
       - 3330:3000
   n8n-db:
     container_name: n8n-db
-    image: postgres:12-alpine
+    image: postgres:17-alpine
     restart: unless-stopped
     environment:
       PUID: $PUID
@@ -23,15 +23,19 @@ services:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: n8n
     volumes:
-      - $CONFIG_ROOT/n8n/db:/var/lib/postgresql/data
+      - $CONFIG_ROOT/n8n/db17:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U n8n"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   n8n:
     container_name: n8n
-    image: docker.n8n.io/n8nio/n8n:1.120.4
+    image: docker.n8n.io/n8nio/n8n:1.126.1
     restart: unless-stopped
     depends_on:
-      - n8n-db
-    links:
-      - n8n-db
+      n8n-db:
+        condition: service_healthy
     environment:
       PUID: $PUID
       PGID: $PGID
