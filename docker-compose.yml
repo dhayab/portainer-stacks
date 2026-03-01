@@ -9,9 +9,9 @@ include:
   - services/media/maintainerr.yml
   - services/media/mylar.yml
   - services/media/nzbget.yml
-  - services/media/overseerr.yml
   - services/media/prowlarr.yml
   - services/media/radarr.yml
+  - services/media/seerr.yml
   - services/media/shinkro.yml
   - services/media/sonarr.yml
   - services/media/tautulli.yml

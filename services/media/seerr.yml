@@ -1,0 +1,12 @@
+services:
+  seerr:
+    container_name: media-seerr
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    restart: unless-stopped
+    environment:
+      TZ: $TZ
+    ports:
+      - 5055:5055
+    volumes:
+      - $CONFIG_ROOT/seerr:/app/config
