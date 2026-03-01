@@ -1,6 +1,7 @@
 services:
   instafix:
-    container_name: instafix
+    x-target: apeach
+    container_name: misc-instafix
     image: ghcr.io/wikidepia/instafix:main
     restart: unless-stopped
     environment:

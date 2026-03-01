@@ -1,5 +1,6 @@
 services:
   nzbget:
+    x-target: apeach
     container_name: media-nzbget
     image: linuxserver/nzbget:latest
     restart: unless-stopped

@@ -1,5 +1,6 @@
 services:
   radarr:
+    x-target: apeach
     container_name: media-radarr
     image: linuxserver/radarr:latest
     restart: unless-stopped

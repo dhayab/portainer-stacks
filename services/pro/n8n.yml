@@ -1,5 +1,6 @@
 services:
   n8n-browserless:
+    x-target: apeach
     container_name: n8n-browserless
     image: browserless/chrome:latest
     restart: unless-stopped

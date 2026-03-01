@@ -1,5 +1,6 @@
 services:
   umami-db:
+    x-target: apeach
     container_name: umami-db
     image: postgres:12-alpine
     restart: unless-stopped

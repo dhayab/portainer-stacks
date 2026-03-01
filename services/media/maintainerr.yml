@@ -1,5 +1,6 @@
 services:
   maintainerr:
+    x-target: apeach
     container_name: media-maintainerr
     image: ghcr.io/jorenn92/maintainerr:latest
     restart: unless-stopped

@@ -1,5 +1,6 @@
 services:
   jdownloader:
+    x-target: apeach
     container_name: media-jdownloader
     image: jlesage/jdownloader-2:latest
     restart: unless-stopped

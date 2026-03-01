@@ -1,6 +1,6 @@
 services:
   bastion:
-    container_name: bastion
+    container_name: lab-bastion
     image: lscr.io/linuxserver/openssh-server:latest
     restart: always
     environment:

@@ -1,5 +1,6 @@
 services:
   prowlarr:
+    x-target: apeach
     container_name: media-prowlarr
     image: linuxserver/prowlarr:latest
     restart: unless-stopped

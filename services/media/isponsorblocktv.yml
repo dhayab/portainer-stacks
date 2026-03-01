@@ -1,5 +1,6 @@
 services:
   isponsorblocktv:
+    x-target: apeach
     container_name: media-isponsorblocktv
     image: ghcr.io/dmunozv04/isponsorblocktv:latest
     restart: unless-stopped

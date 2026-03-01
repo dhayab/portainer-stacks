@@ -1,5 +1,6 @@
 services:
   transmission:
+    x-target: apeach
     container_name: media-transmission
     image: linuxserver/transmission:latest
     restart: unless-stopped

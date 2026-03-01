@@ -1,5 +1,6 @@
 services:
   sonarr:
+    x-target: apeach
     container_name: media-sonarr
     image: linuxserver/sonarr:latest
     restart: unless-stopped

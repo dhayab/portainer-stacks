@@ -1,5 +1,6 @@
 services:
   mylar:
+    x-target: apeach
     container_name: media-mylar
     image: linuxserver/mylar3:latest
     restart: unless-stopped

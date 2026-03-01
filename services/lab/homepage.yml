@@ -1,5 +1,6 @@
 services:
   homepage:
+    x-target: apeach
     container_name: lab-homepage
     image: ghcr.io/gethomepage/homepage:latest
     restart: always

@@ -1,0 +1,20 @@
+# Use `make build` to generate and update this file
+include:
+  - services/lab/homebridge.yml
+  - services/lab/homepage.yml
+  - services/media/isponsorblocktv.yml
+  - services/media/jdownloader.yml
+  - services/media/maintainerr.yml
+  - services/media/mylar.yml
+  - services/media/nzbget.yml
+  - services/media/prowlarr.yml
+  - services/media/radarr.yml
+  - services/media/seerr.yml
+  - services/media/shinkro.yml
+  - services/media/sonarr.yml
+  - services/media/tautulli.yml
+  - services/media/transmission.yml
+  - services/media/ubooquity.yml
+  - services/misc/instafix.yml
+  - services/pro/n8n.yml
+  - services/pro/umami.yml

@@ -1,5 +1,6 @@
 services:
   shinkro:
+    x-target: apeach
     container_name: media-shinkro
     image: ghcr.io/varoop/shinkro:latest
     restart: unless-stopped

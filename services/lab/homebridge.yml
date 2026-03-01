@@ -1,5 +1,6 @@
 services:
   homebridge:
+    x-target: apeach
     container_name: lab-homebridge
     image: homebridge/homebridge:latest
     restart: unless-stopped

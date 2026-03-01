@@ -1,5 +1,6 @@
 services:
   ubooquity:
+    x-target: apeach
     container_name: media-ubooquity
     image: linuxserver/ubooquity:latest
     restart: unless-stopped
