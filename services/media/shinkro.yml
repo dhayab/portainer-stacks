@@ -12,4 +12,3 @@ services:
       - 7011:7011
     volumes:
       - $CONFIG_ROOT/shinkro:/config
-

@@ -18,7 +18,6 @@ services:
       retries: 5
     volumes:
       - $CONFIG_ROOT/umami/db:/var/lib/postgresql/data
-
   umami:
     container_name: umami
     image: ghcr.io/umami-software/umami:postgresql-latest

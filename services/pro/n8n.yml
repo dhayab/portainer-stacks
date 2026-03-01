@@ -11,7 +11,6 @@ services:
       TOKEN: $BROWSERLESS_TOKEN
     ports:
       - 3330:3000
-
   n8n-db:
     container_name: n8n-db
     image: postgres:12-alpine
@@ -25,7 +24,6 @@ services:
       POSTGRES_PASSWORD: n8n
     volumes:
       - $CONFIG_ROOT/n8n/db:/var/lib/postgresql/data
-
   n8n:
     container_name: n8n
     image: docker.n8n.io/n8nio/n8n:1.120.4
