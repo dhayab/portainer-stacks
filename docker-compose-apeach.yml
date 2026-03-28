@@ -1,5 +1,6 @@
 # Use `make build` to generate and update this file
 include:
+  - services/lab/bastion.yml
   - services/lab/homebridge.yml
   - services/lab/homepage.yml
   - services/media/isponsorblocktv.yml

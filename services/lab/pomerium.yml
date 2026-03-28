@@ -1,7 +1,7 @@
 services:
   pomerium:
     container_name: lab-pomerium
-    image: pomerium/pomerium:v0.30
+    image: pomerium/pomerium:v0.32
     restart: always
     ports:
       - 32443:443/tcp

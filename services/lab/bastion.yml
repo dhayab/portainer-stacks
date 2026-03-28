@@ -1,5 +1,6 @@
 services:
   bastion:
+    x-target: apeach
     container_name: lab-bastion
     image: lscr.io/linuxserver/openssh-server:latest
     restart: always

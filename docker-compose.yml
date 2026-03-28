@@ -1,4 +1,3 @@
 # Use `make build` to generate and update this file
 include:
-  - services/lab/bastion.yml
   - services/lab/pomerium.yml
