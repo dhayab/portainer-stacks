@@ -1,0 +1,9 @@
+services:
+  n8n-runners:
+    x-target: ridge
+    container_name: n8n-runners
+    image: n8nio/runners:stable
+    restart: unless-stopped
+    environment:
+      N8N_RUNNERS_TASK_BROKER_URI: http://$HOST_IP:5679
+      N8N_RUNNERS_AUTH_TOKEN: $N8N_RUNNERS_AUTH_TOKEN

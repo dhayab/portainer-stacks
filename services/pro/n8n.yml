@@ -1,17 +1,6 @@
 services:
-  n8n-browserless:
-    x-target: apeach
-    container_name: n8n-browserless
-    image: browserless/chrome:latest
-    restart: unless-stopped
-    environment:
-      PUID: $PUID
-      PGID: $PGID
-      TZ: $TZ
-      TOKEN: $BROWSERLESS_TOKEN
-    ports:
-      - 3330:3000
   n8n-db:
+    x-target: apeach
     container_name: n8n-db
     image: postgres:17-alpine
     restart: unless-stopped
@@ -29,15 +18,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  n8n-runners:
-    container_name: n8n-runners
-    image: n8nio/runners:stable
-    restart: unless-stopped
-    depends_on:
-      - n8n
-    environment:
-      N8N_RUNNERS_TASK_BROKER_URI: http://n8n:5679
-      N8N_RUNNERS_AUTH_TOKEN: $N8N_RUNNERS_AUTH_TOKEN
   n8n:
     container_name: n8n
     image: docker.n8n.io/n8nio/n8n:stable
@@ -69,5 +49,6 @@ services:
       WEBHOOK_URL: $N8N_WEBHOOK_URL
     ports:
       - 5678:5678
+      - 5679:5679
     volumes:
       - $CONFIG_ROOT/n8n/app:/home/node/.n8n
