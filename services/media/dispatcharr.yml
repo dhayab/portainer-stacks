@@ -1,0 +1,21 @@
+services:
+  dispatcharr:
+    x-target: ridge
+    container_name: media-dispatcharr
+    image: ghcr.io/dispatcharr/dispatcharr:latest
+    restart: unless-stopped
+    environment:
+      UWSGI_NICE_LEVEL: -5
+    cap_add:
+      - SYS_NICE
+    ports:
+      - 9191:9191
+    volumes:
+      - $CONFIG_ROOT_RIDGE/dispatcharr:/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

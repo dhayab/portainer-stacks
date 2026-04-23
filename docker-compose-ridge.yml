@@ -3,5 +3,7 @@ include:
   - services/ai/comfyui.yml
   - services/ai/ollama.yml
   - services/ai/openwebui.yml
+  - services/lab/cloudflared.yml
+  - services/media/dispatcharr.yml
   - services/pro/browserless.yml
   - services/pro/n8n-runners.yml
