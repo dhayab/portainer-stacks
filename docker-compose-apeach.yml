@@ -10,6 +10,7 @@ include:
   - services/media/nzbget.yml
   - services/media/prowlarr.yml
   - services/media/radarr.yml
+  - services/media/romm.yml
   - services/media/seerr.yml
   - services/media/shinkro.yml
   - services/media/sonarr.yml

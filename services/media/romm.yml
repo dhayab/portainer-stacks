@@ -1,0 +1,49 @@
+services:
+  romm:
+    x-target: apeach
+    container_name: media-romm
+    image: rommapp/romm:latest
+    restart: unless-stopped
+    environment:
+      DB_HOST: romm-db
+      DB_NAME: romm
+      DB_USER: romm
+      DB_PASSWD: romm
+      ROMM_AUTH_SECRET_KEY: $ROMM_AUTH_SECRET_KEY
+      SCREENSCRAPER_USER: $ROMM_SCREENSCRAPER_USER
+      SCREENSCRAPER_PASSWORD: $ROMM_SCREENSCRAPER_PASSWORD
+      RETROACHIEVEMENTS_API_KEY: $ROMM_RETROACHIEVEMENTS_API_KEY
+      STEAMGRIDDB_API_KEY: $ROMM_STEAMGRIDDB_API_KEY
+      HASHEOUS_API_ENABLED: true
+    volumes:
+      - romm_redis_data:/redis-data
+      - $MEDIA_ROOT/Games/Retro:/romm/library
+      - $CONFIG_ROOT/romm/assets:/romm/assets
+      - $CONFIG_ROOT/romm/config:/romm/config
+      - $CONFIG_ROOT/romm/resources:/romm/resources
+    ports:
+      - 8080:8080
+    depends_on:
+      romm-db:
+        condition: service_healthy
+        restart: true
+  romm-db:
+    container_name: media-romm-db
+    image: mariadb:latest
+    restart: unless-stopped
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+      MARIADB_DATABASE: romm
+      MARIADB_USER: romm
+      MARIADB_PASSWORD: romm
+    volumes:
+      - $CONFIG_ROOT/romm/db:/var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      start_period: 30s
+      start_interval: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  romm_redis_data:
